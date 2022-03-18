@@ -1,0 +1,78 @@
+.task {
+    width: 80%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 50px;
+    
+}
+
+.task__container {
+    height: 32px;
+    display: flex;
+    border-bottom: 2px solid #3E3B3B;
+}
+
+.task__item {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    cursor: pointer;
+    flex: 80%;
+    position: relative;
+}
+
+.task__item input {
+    display: none;
+    
+}
+
+.task__item input:checked ~ .task__text {
+    text-decoration: line-through;
+    opacity: .4;
+}
+
+.task__item input:checked ~ .task__des {
+    text-decoration: line-through;
+    opacity: .4;
+}
+
+.task__item input:checked ~ .icon-check {
+    opacity: 1;
+}
+
+
+.icon {
+    width: 20px;
+    height: 20px;
+    background-image: url(https://i.postimg.cc/dtTg12CZ/check-circle.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
+}
+
+
+.icon-check {
+    opacity: .4;
+    margin-left: 7px;
+    margin-right: 15px;
+}
+
+.icon-edit {
+    background-image: url(https://i.postimg.cc/c18NgGyJ/edit-3.png);
+    flex: 10%;
+}
+.icon-delete {
+    background-image: url(https://i.postimg.cc/rw9TVG6C/trash-2.png);
+    flex: 10%;
+}
+
+.task__des {
+    color: #3E3B3B;
+    font-size: 14px;
+    position: absolute;
+    top: 30px;
+    left: 7px;
+}
