@@ -1,43 +1,20 @@
-import React, { useContext }from 'react';
+import React from 'react';
 
-// imoport context
-import { LocalStoreContext } from './context/ContextLocalStore'
-import { AccionsTasks } from './functions/acccions'
+// import functions to open modal
+import { scrollbar } from './functions/scrcollbar'
 
+function CreateButton({ setOpenModal }) {
 
-// key localstore
-const KEY_DATA_LOCALSTORE = 'data-tasks-v1';
+    // function to open modal
+    function handleClick() {
 
-import { v4 as uuidv4 } from 'uuid';
-
-
-function CreateButton() {
-    
-    const { dataTasks, setDataTasks } = useContext(LocalStoreContext)
-
-    // init acciones tasks
-    const acccion = new AccionsTasks(dataTasks)
-
-    // function to add tasks
-    function handleCreateTodo() {
-
-        const id = uuidv4();
-        const title = prompt('Add new Task!, insert title.');
-
-        if(id && title) {
-            const newTask = {
-                id,
-                title,
-                description: 'this is a task new!',
-                done: false,
-            }
-            const newTasks = acccion.add(newTask)
-            setDataTasks(KEY_DATA_LOCALSTORE, newTasks)
-        }
+        scrollbar.add()
+        
+        setOpenModal(true)
     }
 
     return (
-        <button className="btn btn-add" onClick={handleCreateTodo}>+</button>
+        <button className="btn btn-add" onClick={handleClick}>+</button>
     );
 }
 

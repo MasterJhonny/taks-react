@@ -16,7 +16,7 @@ function Search({ search, setSearch }) {
     return (
         <div className="Search">
             <input  
-                className="Search__input" 
+                className="input input-search" 
                 type="text"
                 onChange={handleChange} 
                 value={search}

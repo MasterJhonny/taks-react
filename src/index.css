@@ -5,3 +5,7 @@ body {
   font-family: 'Monda', sans-serif;
   color: #3E3B3B;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

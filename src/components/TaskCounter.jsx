@@ -1,13 +1,20 @@
 import React from 'react'
 
+// import hooks custom
+import { useLocalStorage } from './CustomHooks/useLocalStorage'
 
-function TaskCounter({ keyLocalStore, completed, total, name, setName }) {
+// key name local store
+const KEY_NAME_LOCALSTORE = 'data-name-v1';
 
+function TaskCounter({ completed, total }) {
+
+    // set name and
+    const [name, setName] = useLocalStorage(KEY_NAME_LOCALSTORE,'Jhonny')
 
     function handleClick () {
-        const name = prompt('Update name!')
-        if(name) {
-            setName(keyLocalStore, name)
+        const newName = prompt('Update name!')
+        if(newName) {
+            setName(KEY_NAME_LOCALSTORE, newName)
         }
     }
 

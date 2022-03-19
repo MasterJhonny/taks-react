@@ -15,10 +15,11 @@ import { ListTasks } from '../ListTasks'
 import { Task } from '../Task/Task'
 import { CreateButton } from '../CreateButton'
 import { TaskCounter } from '../TaskCounter'
+import { Modal } from '../Modal'
+import { ModalAdd } from '../Modal/ModalAdd'
 
 // key localstore
 const KEY_DATA_LOCALSTORE = 'data-tasks-v1';
-const KEY_NAME_LOCALSTORE = 'data-name-v1';
 
 // data source
 const list_tasks = [
@@ -46,11 +47,12 @@ function App() {
 
   // use local Store
   const [dataTasks, setDataTasks] = useLocalStorage(KEY_DATA_LOCALSTORE, list_tasks);
-  // set name and
-  const [name, setName] = useLocalStorage(KEY_NAME_LOCALSTORE,'Jhonny')
 
   // state of search
   const [search, setSearch] = useState('')
+
+  // state for open modal input
+  const [openModal, setOpenModal] = useState(false)
 
   // state list tasks
   const [tasks, setTasks] = useState(dataTasks)
@@ -59,9 +61,7 @@ function App() {
   const total = dataTasks.length;
 
   // total de tasks completed
-  // debugger
   const completed = tasks.filter(task => task.done === true).length;
-
 
   // expression regex and filter tasks
   const expre = new RegExp(search, 'i')
@@ -78,9 +78,6 @@ function App() {
       <TaskCounter
         completed={completed}
         total={total}
-        name={name}
-        setName={setName}
-        keyLocalStore={KEY_NAME_LOCALSTORE}
       />
       <Search
         search={search}
@@ -98,9 +95,13 @@ function App() {
             />
           ))}
         </ListTasks>
-        <CreateButton/>
+          <CreateButton
+            setOpenModal={setOpenModal}
+          />
+          <Modal>
+            {openModal ? <ModalAdd setOpenModal={setOpenModal} /> : null}
+          </Modal>
       </LocalStoreContextProvider>
-        
     </React.Fragment>
   )
 }

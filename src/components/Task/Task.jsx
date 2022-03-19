@@ -11,6 +11,7 @@ import './Task.css'
 
 function Task({ id, title, description, done }) {
 
+    // state of tasks global
     const { dataTasks, setDataTasks } = useContext(LocalStoreContext);
 
     //init acciones
